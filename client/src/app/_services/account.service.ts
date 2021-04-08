@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
 
 @Injectable({
@@ -12,7 +13,7 @@ import { User } from '../_models/user';
 //Components are destroyed when we move from one componenet to other componenet
 //and that is why service is a singleto n
 export class AccountService {
-  baseUrl = 'https://localhost:5001/api/'; 
+  baseUrl = environment.apiUrl; 
   //creating an observable to store our user in means to persists the user on page reload
   //whenwver this observable is subscribed then they'll get the values of the obaservable 
   private currentUserSource = new ReplaySubject<User>(1);
